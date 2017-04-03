@@ -1,0 +1,207 @@
+\RequirePackage{filecontents}
+\begin{filecontents}{\jobname.bib}
+
+@article{jayabalan2016dynamic,title={Dynamic Action Recognition: A convolutional neural network model for temporally organized joint location data},author={Jayabalan, Adhavan and Karunakaran, Harish and Murlidharan, Shravan and Shizume, Tesia},journal={arXiv preprint arXiv:1612.06703},year={2016}
+}
+@article{liu20163d,
+  title={3d-based deep convolutional neural network for action recognition with depth sequences},
+  author={Liu, Zhi and Zhang, Chenyang and Tian, Yingli},
+  journal={Image and Vision Computing},
+  volume={55},
+  pages={93--100},
+  year={2016},
+  publisher={Elsevier}
+}
+@article{ji20133d,
+  title={3D convolutional neural networks for human action recognition},
+  author={Ji, Shuiwang and Xu, Wei and Yang, Ming and Yu, Kai},
+  journal={IEEE transactions on pattern analysis and machine intelligence},
+  volume={35},
+  number={1},
+  pages={221--231},
+  year={2013},
+  publisher={IEEE}
+}
+@inproceedings{chen2016r,
+  title={R-cnn for small object detection},
+  author={Chen, Chenyi and Liu, Ming-Yu and Tuzel, Oncel and Xiao, Jianxiong},
+  booktitle={Asian Conference on Computer Vision},
+  pages={214--230},
+  year={2016},
+  organization={Springer}
+}
+@inproceedings{bilen2016dynamic,
+  title={Dynamic image networks for action recognition},
+  author={Bilen, Hakan and Fernando, Basura and Gavves, Efstratios and Vedaldi, Andrea and Gould, Stephen},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={3034--3042},
+  year={2016}
+}
+@inproceedings{feichtenhofer2016convolutional,
+  title={Convolutional two-stream network fusion for video action recognition},
+  author={Feichtenhofer, Christoph and Pinz, Axel and Zisserman, Andrew},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={1933--1941},
+  year={2016}
+}
+@article{lecun2015deep,
+  title={Deep learning},
+  author={LeCun, Yann and Bengio, Yoshua and Hinton, Geoffrey},
+  journal={Nature},
+  volume={521},
+  number={7553},
+  pages={436--444},
+  year={2015},
+  publisher={Nature Research}
+}
+@inproceedings{geng2015human,
+  title={Human Action Recognition based on Convolutional Neural Networks with a Convolutional Auto-Encoder},
+  author={Geng, Chi and Song, JianXin},
+  booktitle={5th International Conference on Computer Sciences and Automation Engineering (ICCSAE 2015)},
+  year={2015}
+}
+\end{filecontents}
+
+
+\documentclass[13 pt]{article}
+\usepackage{filecontents}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{graphicx} % Required to insert image
+\usepackage{natbib}
+\usepackage{bibentry}
+\bibliographystyle{plainnat}
+\nobibliography*
+ 
+
+% Margins
+
+\topmargin=-0.45in
+
+\evensidemargin=0in
+
+\oddsidemargin=0in
+
+\textwidth=6.5in
+
+\textheight=9.0in
+
+\headsep=0.25in
+
+ 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+ 
+
+ 
+
+ 
+
+%----------------------------------------------------------------------------------------
+
+%    NAME AND CLASS SECTION
+
+%----------------------------------------------------------------------------------------
+
+ 
+
+\newcommand{\hmwkTitle}{3D Convolutions for deep learning and its applications to surveillance} % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ March\ 22,\ 2017} % Due date
+\newcommand{\hmwkClass}{Literature Review} % Course/class
+\newcommand{\hmwkAuthorName}{Raesetje Bonjo Sefala, 844165} % Your name
+
+ 
+
+%----------------------------------------------------------------------------------------
+
+%    TITLE PAGE
+
+%----------------------------------------------------------------------------------------
+
+ 
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\vspace{3in}
+}
+\author{\textbf{\hmwkAuthorName}}
+
+%----------------------------------------------------------------------------------------
+
+ 
+
+\begin{document}
+\maketitle
+\newpage
+\section{Introduction}
+ \vspace{0.1in}
+ \par
+Human action recognition is an important task in fields such as surveillance. Although, accurately recognizing human  actions in a video sequence is not an easy task to achieve since there are challenges such as low resolution, different points of view, cluttered backgrounds, etc. Many have tried to solve this challenge of recognizing actions in videos by using machine learning techniques such as deep learning but it is still not a closed chapter. \vspace{0.1in}
+
+Deep learning is a method of machine learning which allows models which have multiple layers in between the input and output layers to learn data representations with multiple layers of abstraction (\cite{lecun2015deep}). Convolutional Neural Network(CNN) is a form of deep learning neural network used to effectively detect and classify multimedia (\cite{lecun2015deep} ). \vspace{0.1in}
+
+In this project, we will be investigating whether a 2D CNN performs as good as a 3D CNN in the task of recognizing actions in videos. The performance will be measured in terms of the amount of the recognition error each model will produce and the time taken by each model to produce results given the same data set and hardware. The main difference between 2D and 3D CNNs is that 3D CNNs also takes into account the motion information in between the image frames from the video since its convolutional kernel is 3 dimensional and can thus read in the temporal features between the frames. We will be using the KTH data set which includes 2391 videos taken over a homogeneous background. The videos have 6 categories of human actions(walking, jogging, running, boxing, hand waving and hand clapping).
+
+ \par
+
+\section{Literature Review}
+
+\subsection{Human Action Recognition based on Convolutional Neural Networks
+with a Convolutional Auto-Encoder}
+ \vspace{0.1in}
+
+\par
+In this paper (\cite{geng2015human}) , they use 2D CNNs to recognize human actions in videos obtained from the KTH data set. They state that hand designed feature selection is a problem driven task since in the real world, it is challenging to know which features a specific task will use which justifies the use of CNNs. They also point out that convolutional neural network's weights are generally trained by time consuming back propagation neural networks which is why they are using a convolutional auto encoder to obtain the filters for the first layer. After the unsupervised pre-training, they continue with using 2D convolutions and a Support Vector Machine to classify the actions at the last layer of the CNN.\vspace{0.1in} 
+
+When the unsupervised pre-training is used on the 2D CNN, an average accuracy of 5.13\% is obtained when compared to the normal 2D CNN results showing that feature extraction methods also play a role in the inaccuracies the model can obtain when recognizing images.This shows that a 2D CNN can get a positive advantage when compared to a 3D CNN by changing the way the model is built including operations/functions applied to it.
+
+\par
+
+\subsection{3D Convolutional Neural Networks for Human Action Recognition}
+ \vspace{0.1in}
+ \par
+The limitation of the previous model(\cite{geng2015human}) is that it only takes in 2D inputs. Figure \ref{fig:2D} (\cite{geng2015human}) shows the CNN architecture from a high level perspective while figure \ref{fig:3D} (\cite{ji20133d}) shows a high level 3D CNN architecture.
+\begin{figure}[h!]
+	\includegraphics[scale=0.5]{images/2dcnn.JPG} 
+	\caption{2D CNN architecture}
+	\label{fig:2D}
+\end{figure}	
+ \par
+\vspace{0.4in}
+\begin{figure}[h!]
+\includegraphics[scale=0.5]{images/3dcnn.JPG} 
+\caption{3D CNN architecture}
+\label{fig:3D}
+\end{figure}
+ \par
+\vspace{0.4in}
+In this paper \cite{ji20133d}, they also agree that using hand crafted features is inefficient especially in real world scenarios. They are using 3D Convolutional Neural Networks(3D CNNs) instead of 2D CNNs in order to capture both spatial and temporal features of the videos. \vspace{0.1in} 
+
+They use a 3D filter to extract spatial features in the (x,y) planes of the frame stack and temporal features in-between the frames. On each information channel, convolutions and subsampling operations are performed separately. The combinations of all of the information channels from the input frames generated by the model gives us the final feature representation. The final feature representation has both spatial and temporal information encoded unlike in the previous paper. The model was evaluated on the TREC Video Retrieval Evaluation (TRECVID) airport video surveillance data and the KTH data set and on both, the model performed significantly well.\vspace{0.1in}
+
+This paper does not only consider the 2D properties of the input data like the first paper does. The model is also not sensitive to crowded backgrounds as they used the TRECVID data set and the homogeneous background KTH data set and still achieved good results.  
+
+
+
+\section{Conclusion}
+
+In this project, we will be investigating whether the information encoded between the image frames captured by 3D CNN models play a vital role in accurately recognizing actions in videos. The two papers show that it is possible to get results by either using 2D CNNs or 3D CNNs. Although we still have to investigate which model arrangement works better in which circumstance. 
+ \par
+\vspace{0.4in}
+
+  \par
+\bibliography{\jobname}
+\par
+\end{document}
